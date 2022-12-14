@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User 1</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.2.min.js"
+      integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.stringee.com/sdk/web/latest/stringee-web-sdk.min.js"
+    ></script>
+    <style>
+      #video-container {
+        position: relative;
+        margin: auto;
+        width: 640px;
+      }
+
+      video {
+        background: #dee;
+      }
+
+      #localVideo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 120px;
+        z-index: 10;
+        background: #333;
+      }
+
+      #remoteVideo {
+        width: 100%;
+      }
+
+      #action-buttons {
+        margin: auto;
+        text-align: center;
+      }
+
+      .hidden-first {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="jumbotron">
+            <div class="container">
+              <h2>Video call Demo - User 1</h2>
+              <p>
+                By <a href="https://developer.stringee.com/">stringee.com</a>
+              </p>
+              <div id="incoming-call-notice" style="display: none">
+                <div class="spinner-grow text-primary" role="status">
+                  <span class="sr-only">Incoming call...</span>
+                </div>
+                <h3>Incoming call...</h3>
+              </div>
+            </div>
+          </div>
+
+          <div id="video-container">
+            <video id="localVideo" autoplay muted></video>
+            <video id="remoteVideo" autoplay style="height: 360px"></video>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col" id="action-buttons">
+          <button id="callButton" class="btn btn-success">Call</button>
+          <button id="answerCallButton" class="btn btn-info hidden-first">
+            Answer Call
+          </button>
+          <button id="rejectCallButton" class="btn btn-warning hidden-first">
+            Reject Call
+          </button>
+          <button id="endCallButton" class="btn btn-danger hidden-first">
+            End Call
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/lib/socket.io-2.2.0.js"></script>
+    <!-- <script src="js/StringeeSDK-1.5.10.js"></script> -->
+
+    <script>
+      var token =
+        "eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTSy4wLmNDbnl4aXZ1b0Q0Q1RsaFJtZ2ZRcW0yVHI5bVdLTkNoLTE2NzEwMjAyOTciLCJpc3MiOiJTSy4wLmNDbnl4aXZ1b0Q0Q1RsaFJtZ2ZRcW0yVHI5bVdLTkNoIiwiZXhwIjoxNjcxMDYzNDk3LCJ1c2VySWQiOiJ1c2VyMSJ9.GrPRkiPKMIbGvxDxhlIBI1nLUL8TF6EofaXYRFcbhDA";
+      var callerId = "user1";
+      var calleeId = "user2";
+    </script>
+
+    <script src="js/code.js"></script>
+  </body>
+</html>
