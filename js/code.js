@@ -5,7 +5,8 @@ function settingCallEvent(
   callButton,
   answerCallButton,
   endCallButton,
-  rejectCallButton
+  rejectCallButton,
+  callButtonVoid
 ) {
   call1.on("addremotestream", function (stream) {
     // reset srcObject to work around minor bugs in Chrome and Edge.
@@ -27,6 +28,7 @@ function settingCallEvent(
     if (state.code === 6 || state.code === 5) {
       //end call or callee rejected
       callButton.show();
+      callButtonVoid.show();
       endCallButton.hide();
       rejectCallButton.hide();
       answerCallButton.hide();
@@ -53,6 +55,8 @@ jQuery(function () {
     "StringeeUtil.isWebRTCSupported: " + StringeeUtil.isWebRTCSupported()
   );
   var callButton = $("#callButton");
+  var callButtonVoid = $("#callButtonVoid");
+
   var answerCallButton = $("#answerCallButton");
   var rejectCallButton = $("#rejectCallButton");
   var endCallButton = $("#endCallButton");
@@ -92,7 +96,8 @@ jQuery(function () {
       callButton,
       answerCallButton,
       endCallButton,
-      rejectCallButton
+      rejectCallButton,
+      callButtonVoid
     );
 
     currentCall.makeCall(function (res) {
@@ -102,7 +107,31 @@ jQuery(function () {
       }
     });
   });
+  callButtonVoid.on("click", function () {
+    console.log("client", client);
+    console.log("callerId", callerId);
+    console.log("calleeId", calleeId);
 
+    currentCall = new StringeeCall(client, callerId, calleeId, false);
+
+    settingCallEvent(
+      currentCall,
+      localVideo,
+      remoteVideo,
+      callButton,
+      answerCallButton,
+      endCallButton,
+      rejectCallButton,
+      callButtonVoid
+    );
+
+    currentCall.makeCall(function (res) {
+      console.log("+++ call callback: ", res);
+      if (res.message === "SUCCESS") {
+        document.dispatchEvent(new Event("connect_ok"));
+      }
+    });
+  });
   //RECEIVE CALL
   client.on("incomingcall", function (incomingcall) {
     $("#incoming-call-notice").show();
@@ -116,21 +145,28 @@ jQuery(function () {
       callButton,
       answerCallButton,
       endCallButton,
-      rejectCallButton
+      rejectCallButton,
+      callButtonVoid
     );
 
     callButton.hide();
+    callButtonVoid.hide();
+
     answerCallButton.show();
     rejectCallButton.show();
   });
 
   //Event handler for buttons
   answerCallButton.on("click", function () {
+    // $("#incoming-call-notice").hidden();
+
     myAudio.pause();
     $(this).hide();
     rejectCallButton.hide();
     endCallButton.show();
     callButton.hide();
+    callButtonVoid.hide();
+
     console.log("current call ", currentCall, typeof currentCall);
     if (currentCall != null) {
       currentCall.answer(function (res) {
@@ -141,6 +177,7 @@ jQuery(function () {
 
   rejectCallButton.on("click", function () {
     myAudio.pause();
+    // $("#incoming-call-notice").hidden();
 
     if (currentCall != null) {
       currentCall.reject(function (res) {
@@ -149,11 +186,15 @@ jQuery(function () {
     }
 
     callButton.show();
+    callButtonVoid.show();
+
     $(this).hide();
     answerCallButton.hide();
   });
 
   endCallButton.on("click", function () {
+    // $("#incoming-call-notice").hidden();
+
     if (currentCall != null) {
       currentCall.hangup(function (res) {
         console.log("+++ hangup: ", res);
@@ -161,12 +202,26 @@ jQuery(function () {
     }
 
     callButton.show();
+    callButtonVoid.show();
+
     endCallButton.hide();
   });
 
   //event listener to show and hide the buttons
   document.addEventListener("connect_ok", function () {
     callButton.hide();
+    callButtonVoid.hide();
+
     endCallButton.show();
   });
+});
+$(document).ready(function () {
+  if (+arrNew["caller"] == 1) {
+    // console.log($("#callButton")[0]);
+    // console.log(alert("click"));
+    // $("#callButton")[0].click();
+  }
+  if (+arrNew["anwser"] == 1) {
+    // $("#answerCallButton")[0].click();
+  }
 });
