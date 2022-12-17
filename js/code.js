@@ -215,13 +215,3 @@ jQuery(function () {
     endCallButton.show();
   });
 });
-$(document).ready(function () {
-  if (+arrNew["caller"] == 1) {
-    // console.log($("#callButton")[0]);
-    // console.log(alert("click"));
-    // $("#callButton")[0].click();
-  }
-  if (+arrNew["anwser"] == 1) {
-    // $("#answerCallButton")[0].click();
-  }
-});
