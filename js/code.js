@@ -48,7 +48,6 @@ function settingCallEvent(
 }
 
 jQuery(function () {
-  let myAudio = new Audio("../vintage-phone-ringing-121778.mp3");
   var localVideo = document.getElementById("localVideo");
   var remoteVideo = document.getElementById("remoteVideo");
   console.log(
@@ -135,7 +134,6 @@ jQuery(function () {
   //RECEIVE CALL
   client.on("incomingcall", function (incomingcall) {
     $("#incoming-call-notice").show();
-    myAudio.play();
 
     currentCall = incomingcall;
     settingCallEvent(
@@ -160,7 +158,6 @@ jQuery(function () {
   answerCallButton.on("click", function () {
     // $("#incoming-call-notice").hidden();
 
-    myAudio.pause();
     $(this).hide();
     rejectCallButton.hide();
     endCallButton.show();
@@ -176,8 +173,7 @@ jQuery(function () {
   });
 
   rejectCallButton.on("click", function () {
-    myAudio.pause();
-    // $("#incoming-call-notice").hidden();
+     $("#incoming-call-notice").hidden();
 
     if (currentCall != null) {
       currentCall.reject(function (res) {
@@ -214,14 +210,4 @@ jQuery(function () {
 
     endCallButton.show();
   });
-});
-$(document).ready(function () {
-  if (+arrNew["caller"] == 1) {
-    // console.log($("#callButton")[0]);
-    // console.log(alert("click"));
-    // $("#callButton")[0].click();
-  }
-  if (+arrNew["anwser"] == 1) {
-    // $("#answerCallButton")[0].click();
-  }
 });
