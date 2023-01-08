@@ -48,7 +48,7 @@ function settingCallEvent(
 }
 
 jQuery(function () {
-  let myAudio = new Audio("../vintage-phone-ringing-121778.mp3");
+  let myAudio = new Audio("../../vintage-phone-ringing-121778.mp3");
   var localVideo = document.getElementById("localVideo");
   var remoteVideo = document.getElementById("remoteVideo");
   console.log(
@@ -56,6 +56,7 @@ jQuery(function () {
   );
   var callButton = $("#callButton");
   var callButtonVoid = $("#callButtonVoid");
+  var callButtonGroup = $("#callButtonGroup");
 
   var answerCallButton = $("#answerCallButton");
   var rejectCallButton = $("#rejectCallButton");
