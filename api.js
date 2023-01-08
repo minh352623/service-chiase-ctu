@@ -1,7 +1,14 @@
-const PROJECT_ID = "SK.0.cCnyxivuoD4CTlhRmgfQqm2Tr9mWKNCh";
+const PROJECT_ID = "SK.0.AQsyo2aGhr3Sl0fZ1sbg32oUyo7ZNaoj"
+      
+      "SKIuNgIgQclWM0GFSPCJO7eervWS7hKkQg"
+      
+//       "SK.0.cCnyxivuoD4CTlhRmgfQqm2Tr9mWKNCh";
 
 //SKIuNgIgQclWM0GFSPCJO7eervWS7hKkQg
-const PROJECT_SECRET = "OVZhdTNPR3RQVFg4bWxJY1JGd3pFand1MkNVTmJveQ==";
+const PROJECT_SECRET ="VHFOMXdZYnljc2FoRlBjRXg1d2R1VDBSWFhORTZUOEc="
+      "Tk1NaUZGVElWZ3VpNFZVQlZVVTZseWFsWTlHTndyMw=="
+      
+      "OVZhdTNPR3RQVFg4bWxJY1JGd3pFand1MkNVTmJveQ==";
 
 // /Tk1NaUZGVElWZ3VpNFZVQlZVVTZseWFsWTlHTndyMw==
 const BASE_URL = "https://api.stringee.com/v1/room2";
