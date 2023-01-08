@@ -48,13 +48,14 @@ function settingCallEvent(
 }
 
 jQuery(function () {
-  var localVideo = document.getElementById("localVideo");
+  let myAudio = new Audio("../../vintage-phone-ringing-121778.mp3");
   var remoteVideo = document.getElementById("remoteVideo");
   console.log(
     "StringeeUtil.isWebRTCSupported: " + StringeeUtil.isWebRTCSupported()
   );
   var callButton = $("#callButton");
   var callButtonVoid = $("#callButtonVoid");
+  var callButtonGroup = $("#callButtonGroup");
 
   var answerCallButton = $("#answerCallButton");
   var rejectCallButton = $("#rejectCallButton");

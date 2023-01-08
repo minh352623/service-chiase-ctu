@@ -23,7 +23,13 @@
       #video-container {
         position: relative;
         margin: auto;
-        width: 640px;
+        /* width: 640px; */
+        height: 60vh;
+        width: 100vw;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
         max-width: 100%;
       }
 
@@ -35,8 +41,8 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: 150px;
-        height: 200px;
+        max-width: 40vw;
+        height: 20vh;
         z-index: 10;
         background: #333;
       }
@@ -53,15 +59,25 @@
       .hidden-first {
         display: none;
       }
+      /* .jumbotron {
+        background-image: url("./47022 stockdep_com.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+      } */
     </style>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <div class="jumbotron">
+          <div class="jumbotron mb-1">
             <div class="container">
-              <h2>Call service from ChiaSe-CTU</h2>
+              <h2>
+                Dịch vụ gọi điện từ Websitte
+                <span style="color: red">chiase.com</span>
+              </h2>
 
               <div id="incoming-call-notice" style="display: none">
                 <div class="spinner-grow text-primary" role="status">
@@ -74,7 +90,7 @@
 
           <div id="video-container">
             <video id="localVideo" autoplay muted></video>
-            <video id="remoteVideo" autoplay style="height: 360px"></video>
+            <video id="remoteVideo" autoplay style="height: 100%"></video>
           </div>
         </div>
       </div>
@@ -83,10 +99,9 @@
         <div class="col" id="action-buttons">
           <button id="callButton" class="btn btn-success">Gọi Video</button>
           <button id="callButtonVoid" class="btn btn-success">Gọi Void</button>
-          <a href="group_call.html" class="btn btn-success">Gọi nhóm</a>
-
-          
-
+          <a href="group_call.html" id="callButtonGroup" class="btn btn-success"
+            >Gọi nhóm</a
+          >
 
           <button id="answerCallButton" class="btn btn-info hidden-first">
             Đồng ý
