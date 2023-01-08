@@ -157,7 +157,7 @@ jQuery(function () {
 
   //Event handler for buttons
   answerCallButton.on("click", function () {
-    // $("#incoming-call-notice").hidden();
+    $("#incoming-call-notice").hide();
 
     $(this).hide();
     rejectCallButton.hide();
@@ -174,7 +174,7 @@ jQuery(function () {
   });
 
   rejectCallButton.on("click", function () {
-     $("#incoming-call-notice").hidden();
+     $("#incoming-call-notice").hide();
 
     if (currentCall != null) {
       currentCall.reject(function (res) {
@@ -190,7 +190,7 @@ jQuery(function () {
   });
 
   endCallButton.on("click", function () {
-    // $("#incoming-call-notice").hidden();
+    // $("#incoming-call-notice").hide();
 
     if (currentCall != null) {
       currentCall.hangup(function (res) {
